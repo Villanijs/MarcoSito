@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "./Button";
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 import gsap from "gsap";
 
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
+  const location = useLocation();
+  const activePath = location.pathname;
+
   const [toggle, setToggle] = useState(false);
   const overlayRef = useRef(null);
   const subNavRef = useRef(null);
@@ -62,16 +64,16 @@ const Navbar = () => {
           <li
             key={nav.id}
             className={`font-adobe font-normal cursor-pointer text-[16px] relative ${
-              active === nav.title ? "text-white" : "text-dimWhite"
+              activePath === nav.path ? "text-white" : "text-dimWhite"
             } ${index !== navLinks.length - 1 ? "mr-10" : ""}`}
-            onClick={() => setActive(nav.title)}
+            onClick={() => setToggle(false)} // chiude menu se aperto
           >
             <Link to={nav.path} className="relative group">
               {nav.title}
               <span
                 ref={(el) => (underlineRefs.current[index] = el)}
                 className={`absolute left-0 bottom-[-4px] h-[2px] w-full bg-yellow-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ${
-                  active === nav.title ? "scale-x-100" : ""
+                  activePath === nav.path ? "scale-x-100" : ""
                 }`}
               />
             </Link>
@@ -109,12 +111,9 @@ const Navbar = () => {
               <p
                 ref={(el) => (menuItemRefs.current[i] = el)}
                 className={`text-2xl text-white cursor-pointer ${
-                  active === nav.title ? "font-bold" : ""
+                  activePath === nav.path ? "font-bold" : ""
                 }`}
-                onClick={() => {
-                  setActive(nav.title);
-                  setToggle(false);
-                }}
+                onClick={() => setToggle(false)}
               >
                 <Link to={nav.path}>{nav.title}</Link>
               </p>
