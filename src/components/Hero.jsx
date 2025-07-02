@@ -1,5 +1,6 @@
 import styles from "../style";
 import { discount, robot2, contract} from "../assets";
+import Button from "./Button";
 
 
 const Hero = () => {
@@ -30,15 +31,25 @@ const Hero = () => {
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
           Elaborati tramite software certificato e riconosciuto dal CTI (Comitato Tecnico Italiano).
         </p>
-      </div>
+        <div className="w-full flex  mt-4 md:hidden">
+  <Button className="text-customGray" href="#login" white>
+    Contattami
+  </Button>
+</div>
 
-      <div className={`flex-1 flex ${styles.flexCenter} md:my-0 my-10 relative`}>
-        <img src={robot2} alt="billing" className="w-[100%] h-[100%] relative z-[5]" />
+      </div>
+      
+
+      <div className={`flex-1 flex justify-start md:justify-center  md:my-0 mt-8 relative`}>
+        <img
+  src={robot2}
+  alt="billing"
+  className="robot-img "
+/>
+
 
         {/* gradient start */}
-        <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
-        <div className="absolute z-[1] w-[80%] h-[80%] rounded-full white__gradient bottom-40" />
-        <div className="absolute z-[0] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
+        
         {/* gradient end */}
       </div>
 

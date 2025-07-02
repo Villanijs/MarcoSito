@@ -8,7 +8,7 @@ const Marquee = () => {
     gsap.to(marqueeRef.current, {
       xPercent: -50, // solo metà perché abbiamo duplicato il contenuto
       ease: "linear",
-      duration: 35,
+      duration: 16,
       repeat: -1,
     });
   }, []);
@@ -18,10 +18,11 @@ const Marquee = () => {
   `;
 
   return (
-    <div className="marquee-container overflow-hidden whitespace-nowrap">
+    <div className=" marquee-container overflow-hidden whitespace-nowrap">
       <div className="marquee inline-block" ref={marqueeRef}>
-        <span className="inline-block px-4">{text}</span>
-        <span className="inline-block px-4">{text}</span> {/* Duplicato */}
+        <span className="inline-block px-4 text-[18px] md:text-[12px] sm:text-[10px]">{text}</span>
+<span className="inline-block px-4 text-[18px] md:text-[12px] sm:text-[10px]">{text}</span>
+ {/* Duplicato */}
       </div>
     </div>
   );
