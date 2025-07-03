@@ -11,7 +11,7 @@ import Servizi from "./pages/Servizi";
 import Contattami from "./pages/Contattami";
 
 const App = () => (
-  <Router>
+  <Router basename="/MarcoSito">
     <div className="bg-primary w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
@@ -43,3 +43,4 @@ const App = () => (
 );
 
 export default App;
+
